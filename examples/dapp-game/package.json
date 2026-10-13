@@ -1,0 +1,20 @@
+{
+  "name": "@stellar-tab/example-dapp-game",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "tsx src/index.ts",
+    "build": "tsc",
+    "test": "echo \"No tests\"",
+    "lint": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@stellar-tab/sdk": "*",
+    "@stellar/stellar-sdk": "^16.1.0",
+    "dotenv": "^16.4.5"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.0",
+    "tsx": "^4.19.0"
+  }
+}

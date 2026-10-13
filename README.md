@@ -1,29 +1,14 @@
-# stellar-tab
 
-**Open a tab. Pay as you go. Settle on-chain.**
+## Proven on Testnet
 
-Tab is a session-based payment SDK for AI agents and pay-per-use APIs on Stellar.
+Tab was validated end-to-end on Stellar testnet on 2026-10-13:
 
-## The Problem
+- **1** `approve()` transaction signed by the user
+- **10** `transfer_from()` settlements executed by the facilitator
+- **0** additional user signatures for the 10 payments
 
-AI agents, dapp games, and pay-per-inference APIs make many small payments in rapid succession. Today, each payment requires a separate wallet signature or popup — friction theatre that makes micro-payments unusable at scale.
+View the approve transaction:
 
-## The Solution
+https://stellar.expert/explorer/testnet/tx/c5c0eea53e3df9269fe3732e6472698f8e9da07e6a720c1a6642ae9ebe0abbc5
 
-Tab fixes this. The user signs **ONE** Stellar Asset Contract (SAC) `approve()` transaction that grants a spender an allowance with a cap and expiry. A facilitator service then settles N micropayments on-chain via `transfer_from`, all enforced by the SAC itself — not by a centralized server.
-
-The mental model is a bar tab: open it once, run it up, settle at the end.
-
-## Who It's For
-
-- Developers building AI agents that pay per inference
-- Pay-per-use API providers
-- Dapp games with micro-transactions
-- Any app where a user makes many small payments in a row
-
-## Quick Start
-
-```bash
-git clone https://github.com/your-org/stellar-tab.git
-cd stellar-tab
-./scripts/setup.sh
+View the full settlement set in [docs/02-how-it-works.md](docs/02-how-it-works.md).
