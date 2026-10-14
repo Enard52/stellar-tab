@@ -1,6 +1,6 @@
-# How It Works
+# How it works
 
-## The SAC Approve → Allowance → Transfer_From Flow
+## The SAC approve → allowance → transfer_from flow
 
 Stellar Asset Contracts (SACs) implement a token interface with `approve`, `allowance`, and `transfer_from` methods. Tab uses these primitives to enable session-based payments.
 
@@ -12,13 +12,13 @@ The owner calls `approve(from, spender, amount, expiration_ledger)` on the SAC. 
 
 At any time, anyone can query `allowance(from, spender)` to see how much the spender is still allowed to transfer.
 
-### 3. Transfer_From
+### 3. Transfer_from
 
 The spender calls `transfer_from(spender, from, to, amount)`. The SAC checks that the allowance is sufficient, decreases it by `amount`, and transfers the tokens from `from` to `to`.
 
 **Why the facilitator can't overspend:** the SAC enforces the cap and expiry. Even if the facilitator's server is compromised, it cannot transfer more than the approved amount or after the expiry ledger. This is on-chain enforcement, not server-side policy.
 
-## Live Testnet Proof
+## Live testnet proof
 
 The following transactions were executed on Stellar testnet on 2026-10-13.
 
@@ -43,11 +43,11 @@ https://stellar.expert/explorer/testnet/tx/c5c0eea53e3df9269fe3732e6472698f8e9da
 
 **Total settled:** 1,000,000 stroops (0.1 XLM) across 10 API calls, using one user signature.
 
-## Why Caps and Expiry Are On-Chain
+## Why caps and expiry are on-chain
 
 A centralized server could enforce limits, but a compromised server would bypass them. By using the SAC's native allowance mechanism, the limits are enforced by the Stellar protocol itself. The facilitator is just a convenience layer — it never holds the user's funds.
 
-## Tab vs. One-Off Payments
+## Tab vs. one-off payments
 
 |  | One-off payments | Tab |
 |---|---|---|
